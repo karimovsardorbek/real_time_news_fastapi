@@ -1,16 +1,17 @@
 const shownArticleIds = new Set();
 
+// Fetch articles from the API and render them in the DOM
 async function fetchArticles() {
     try {
         const res = await fetch('http://localhost:8010/api/articles/');
         const articles = await res.json();
-        // Remove this line: articles.reverse().forEach(addArticleToDOM);
-        articles.forEach(addArticleToDOM); // Just use forEach directly
+        articles.forEach(addArticleToDOM);
     } catch (err) {
         console.error("Failed to fetch articles:", err);
     }
 }
 
+// Add a new article to the DOM if it hasn't been shown yet
 function addArticleToDOM(article) {
     if (shownArticleIds.has(article.id)) return;
 
@@ -19,6 +20,7 @@ function addArticleToDOM(article) {
     shownArticleIds.add(article.id);
 }
 
+// Render an article card
 function renderArticle(article) {
     const card = document.createElement('div');
     card.className = 'news-card';

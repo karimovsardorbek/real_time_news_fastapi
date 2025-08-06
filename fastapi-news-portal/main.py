@@ -38,13 +38,14 @@ class ArticleResponse(BaseModel):
     id: int
     title: str
     summary: str
-    publication_date: datetime  # Changed to datetime
+    publication_date: datetime
     author: str | None = None
     image: str | None = None
 
     class Config:
-        orm_mode = True  # Enables Pydantic to read data from ORM models
+        orm_mode = True
 
+# Register a new user
 @app.post("/register/")
 async def register(user: UserCreate, db: Session = Depends(get_db_session)):
     db_user = db.query(User).filter(User.username == user.username).first()
@@ -57,6 +58,7 @@ async def register(user: UserCreate, db: Session = Depends(get_db_session)):
     db.refresh(new_user)
     return {"message": "User created successfully"}
 
+# Login and return access token
 @app.post("/token", response_model=Token)
 async def login(user: UserCreate, db: Session = Depends(get_db_session)):
     db_user = db.query(User).filter(User.username == user.username).first()
@@ -65,11 +67,13 @@ async def login(user: UserCreate, db: Session = Depends(get_db_session)):
     access_token = create_access_token({"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
 
+# Retrieve all articles
 @app.get("/api/articles/", response_model=list[ArticleResponse])
 async def get_articles(db: Session = Depends(get_db_session)):
     articles = db.query(Article).all()
     return articles
 
+# Create a new article
 @app.post("/api/generate-news/", response_model=ArticleResponse)
 async def generate_news(current_user: User = Depends(get_current_user), db: Session = Depends(get_db_session)):
     fake = Faker()
@@ -110,7 +114,6 @@ async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
     db = next(get_db())
     try:
-        # Send existing articles on connection
         articles = db.query(Article).order_by(Article.id.desc()).all()
         for article in articles:
             await websocket.send_json({"article": {"id": article.id, "title": article.title, "image": article.image}})

@@ -4,6 +4,7 @@ from datetime import datetime
 
 Base = declarative_base()
 
+# User model for the database
 class User(Base):
     __tablename__ = "users"
 
@@ -12,6 +13,8 @@ class User(Base):
     password_hash = Column(String(255), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+
+# Article model for the database
 class Article(Base):
     __tablename__ = "articles"
 

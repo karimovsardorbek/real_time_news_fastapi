@@ -1,5 +1,8 @@
 from fastapi import WebSocket, WebSocketDisconnect
+from fastapi import FastAPI
+app = FastAPI()
 
+# Connection manager to handle WebSocket connections
 class ConnectionManager:
     def __init__(self):
         self.active_connections = []
@@ -17,10 +20,8 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-# This is already in main.py, but ensure it's included
-from fastapi import FastAPI
-app = FastAPI()  # Ensure this is in main.py, not here
 
+# WebSocket endpoint for news updates
 @app.websocket("/ws/news/")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
