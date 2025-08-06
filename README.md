@@ -27,8 +27,8 @@ A high-performance real-time news aggregation portal built with FastAPI that del
 ### Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/fastapi-real-time-news.git
-cd fastapi-real-time-news
+git clone https://github.com/karimovsardorbek/real_time_news_fastapi.git
+cd real_time_news_fastapi
 
 # Create virtual environment
 python -m venv venv
@@ -100,22 +100,6 @@ const socket = new WebSocket('ws://localhost:8010/ws/news/');
 ```
 
 ---
-
-## 🏗️ Project Structure
-
-```
-fastapi-news-portal/
-├── main.py              # FastAPI application & routes
-├── models.py            # SQLAlchemy ORM models
-├── database.py          # Database connection & session
-├── auth.py              # JWT authentication logic
-├── requirements.txt     # Python dependencies
-├── frontend/
-│   ├── index.html       # Main frontend page
-│   ├── style.css        # Responsive CSS styles
-│   └── main.js          # WebSocket & API client
-└── README.md
-```
 
 ## 🛠️ Tech Stack
 
