@@ -9,12 +9,9 @@ A high-performance real-time news aggregation portal built with FastAPI that del
 
 ## ✨ Key Features  
 - 🔴 **Live Updates**: WebSocket-powered real-time news streaming  
-- ⚡ **High Performance**: Async FastAPI with SQLAlchemy  
-- 📡 **REST API**: Auto-generated OpenAPI/Swagger documentation  
+- ⚡ **High Performance**: Async FastAPI with SQLAlchemy
 - 🛠️ **Admin Tools**: Generate mock news with Faker library  
-- 📱 **Responsive UI**: Modern CSS3 with animations  
-- 🔐 **JWT Auth**: Secure token-based authentication with bcrypt  
-- 🗄️ **SQLite Database**: Lightweight database with ORM models  
+- 🔐 **JWT Auth**: Secure token-based authentication with bcrypt   
 
 ---
 
