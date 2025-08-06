@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+databases[sqlite]
+python-jose[cryptography]
+websockets
+faker
+pyjwt
+passlib[bcrypt]
