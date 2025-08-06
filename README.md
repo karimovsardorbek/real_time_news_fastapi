@@ -158,15 +158,3 @@ uvicorn main:app --host 0.0.0.0 --port 8010 --workers 4
 3. Commit changes (`git commit -m 'Add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
-
----
-
-## 📞 Support
-
-- Create an issue for bug reports
-- Star ⭐ the repo if you find it useful
-- Follow [@yourusername](https://github.com/yourusername) for updates
-
----
-
-**Made with ❤️ and FastAPI**
